@@ -10,4 +10,4 @@ out/
 .idea/
 target/
 /BCSD-7th-0.1.iml
-
+src/main/resources/mybatis/config.properties
