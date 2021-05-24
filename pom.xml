@@ -53,7 +53,13 @@
         </dependency>
 
         <!-- jstl -->
-<!--        JSP standard tag  : 지웠음-->
+<!--        JSP standard tag-->
+        <!-- jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
 
         <!-- json -->
         <dependency>
@@ -132,14 +138,19 @@
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
-
+        <!--lombok-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.20</version>
             <scope>provided</scope>
         </dependency>
-
+        <!-- jwt -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>0.9.1</version>
+        </dependency>
 
     </dependencies>
 
