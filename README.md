@@ -1,2 +1,2 @@
 # BCSD
-log all the BCSD tasks
+8th week : login & JWT token generation
