@@ -9,5 +9,6 @@
 out/
 .idea/
 target/
+lib/
 /BCSD-7th-0.1.iml
 src/main/resources/mybatis/config.properties
