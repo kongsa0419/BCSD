@@ -11,7 +11,7 @@ public interface UserService {
 
     int insertNewUser(User user);
 
-    String logInValidation(User user);
+    String logInValidation(User user) throws Exception;
 
     User getUserIfValid(String jwtValue);
 }

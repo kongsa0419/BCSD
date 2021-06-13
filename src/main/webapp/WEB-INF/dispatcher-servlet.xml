@@ -14,6 +14,11 @@
     <!-- Auth   -->
     <context:component-scan base-package="util"/>
     <aop:aspectj-autoproxy />
+    <context:component-scan base-package="swagger"/>
+
+    <mvc:resources location="classpath:/META-INF/resources/" mapping="swagger-ui.html"></mvc:resources>
+    <mvc:resources location="classpath:/META-INF/resources/webjars/"  mapping="/webjars/**"></mvc:resources>
+
 
 <!--    view resolver-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

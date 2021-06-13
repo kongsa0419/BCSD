@@ -39,7 +39,7 @@ public class AuthController {
 //    로그인 API : 맞으면 token을 주고 틀리면 wrong-message 리턴
     @ResponseBody
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity logIn(@RequestBody User user){
+    public ResponseEntity logIn(@RequestBody User user) throws Exception {
         return new ResponseEntity(mUserService.logInValidation(user), HttpStatus.OK);
     }
 

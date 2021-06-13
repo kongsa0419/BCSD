@@ -38,6 +38,47 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public String logInValidation(User user) throws Exception {
+        String email = user.getEmail();
+        String pwd = user.getPassword();
+
+        /**
+         * email, password validation
+         * null.isEmpty()는 nullPointerException 발생시킴.
+        * */
+        if(email==null)
+            throw new Exception("email is null.");
+        else if(email.startsWith(" ")){
+
+            throw new Exception("공백을 포함하면 안됩니다.");
+        }
+
+        if(pwd==null)
+            throw new Exception("password is null.");
+        else if(pwd.startsWith(" ")){
+
+            throw new Exception("password가 공백을 포함하면 안됩니다.");
+        }
+
+        long id = mUserMapper.getIdByEmail(email);
+        User temp = mUserMapper.getUserById(id);
+        if(!pwd.equals(temp.getPassword())){
+            throw new Exception("invalid Password!");
+        }else{
+            return jwtUtil.genJsonWebToken(Long.valueOf(temp.getId()));   /*jwt*/
+        }
+    }
+
+    //jwtValue : BEARER ~~~~
+    @Override
+    public User getUserIfValid(String jwtValue) {
+        long id = jwtUtil.getIdByParsingValidJwt(jwtValue);
+        return mUserMapper.getUserById(id);
+    }
+
+
+}
+/*    @Override
     public String logInValidation(User user) {
         String email = user.getEmail();
         String pwd = user.getPassword();
@@ -55,20 +96,11 @@ public class UserServiceImpl implements UserService {
             if(!pwd.equals(temp.getPassword())){
                 throw new Exception("invalid Password!");
             }else{
-                return jwtUtil.genJsonWebToken(Long.valueOf(temp.getId()));   /*jwt*/
+                return jwtUtil.genJsonWebToken(Long.valueOf(temp.getId())); //jwt
             }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return "login Faliure";
-    }
-
-    //jwtValue : BEARER ~~~~
-    @Override
-    public User getUserIfValid(String jwtValue) {
-        long id = jwtUtil.getIdByParsingValidJwt(jwtValue);
-        return mUserMapper.getUserById(id);
-    }
-
-
-}
+                    }catch (Exception e){
+                    e.printStackTrace();
+                    }
+                    return "login Faliure";
+                    }
+ */

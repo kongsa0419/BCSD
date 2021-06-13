@@ -2,6 +2,7 @@ package controller;
 
 
 import domain.Product;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,7 +26,7 @@ public class ProductController {
 
     @ResponseBody
     @RequestMapping(value = "/{id}" ,method = RequestMethod.GET)
-    public ResponseEntity getProduct(@PathVariable int id){
+    public ResponseEntity getProduct(@ApiParam(name = "id", value = "(required:id)", required = true) @PathVariable int id){
         return new ResponseEntity(mProductService.getProduct(id), HttpStatus.OK);
     }
 
